@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Workspace365 - 72 York St, South Melbourne</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    /* 
+      Colors derived from the screenshot:
+      Dark header: #0f1f17 (approx)
+      Off-white background: #f5f2ed
+      Coral accent: #e4795b (or #f08360)
+      You can fine-tune these for an exact match
+    */
+
+    :root {
+      --header-bg: #0f1f17;
+      --background: #f5f2ed;
+      --accent: #f08360; /* Main accent (coral/salmon) */
+      --text-color: #333333;
+      --heading-font: Georgia, serif;
+      --body-font: "Segoe UI", Tahoma, sans-serif;
+    }
+
+    * {
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--background);
+      color: var(--text-color);
+      font-family: var(--body-font);
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: var(--header-bg);
+      color: #ffffff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-family: var(--heading-font);
+      font-size: 28px;
+      margin-bottom: 5px;
+    }
+
+    /* Hero Section for address or big text */
+    .hero {
+      background-color: var(--background);
+      text-align: center;
+      padding: 40px 20px 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .hero .address {
+      font-family: var(--heading-font);
+      font-size: 48px;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+    .hero .sub-address {
+      font-family: var(--heading-font);
+      font-size: 20px;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+    .hero p {
+      font-size: 18px;
+      color: #666666;
+      max-width: 600px;
+      margin: 0 auto 20px;
+    }
+
+    .hero .btn-tour {
+      font-size: 16px;
+      padding: 12px 24px;
+      border: 2px solid var(--accent);
+      color: var(--text-color);
+      background-color: transparent;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .hero .btn-tour:hover {
+      background-color: var(--accent);
+      color: #ffffff;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    h2 {
+      font-family: var(--heading-font);
+      font-size: 24px;
+      margin-bottom: 15px;
+      color: var(--accent);
+    }
+
+    /* Checklist styling */
+    .checklist-form .section {
+      margin-bottom: 30px;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 20px;
+    }
+
+    .checklist-form .section:last-child {
+      border-bottom: none;
+    }
+
+    .section h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+      font-family: var(--heading-font);
+      color: #444;
+    }
+
+    .task-item {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .task-item input[type="checkbox"] {
+      margin-right: 10px;
+      transform: scale(1.2);
+    }
+
+    .task-label {
+      flex: 1; 
+      margin-left: 5px;
+      font-size: 16px;
+    }
+
+    .task-actions {
+      display: flex;
+      flex-direction: column;
+      margin-left: 25px;
+      margin-top: 5px;
+    }
+
+    .task-actions input[type="file"] {
+      margin-bottom: 5px;
+    }
+
+    .task-comments {
+      width: 100%;
+      max-width: 350px;
+      padding: 6px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      margin-top: 5px;
+      font-size: 14px;
+    }
+
+    .submit-button {
+      display: block;
+      margin: 30px auto 0;
+      background-color: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s;
+    }
+
+    .submit-button:hover {
+      background-color: #e06e54; /* slightly darker accent */
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #888888;
+      background-color: var(--header-bg);
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Workspace365</h1>
+</header>
+
+<section class="hero">
+  <div class="address">72 York St</div>
+  <div class="sub-address">South Melbourne</div>
+  <p>Are you looking for the perfect coworking space in South Melbourne? If so, you’re in the right place.</p>
+  <button class="btn-tour">Book tour</button>
+</section>
+
+<div class="container">
+  <h2>Co-working Space Cleaning Checklist</h2>
+  <form class="checklist-form" action="#" method="post" enctype="multipart/form-data">
+    <!-- Example grouping of tasks: Common Areas, Meeting Rooms, Kitchens, Bathrooms, etc. -->
+
+    <!-- 1) Common Areas Section -->
+    <div class="section">
+      <h3>Common Areas</h3>
+
+      <!-- Task 1 -->
+      <div class="task-item">
+        <input type="checkbox" id="vacuum_floors" name="vacuum_floors">
+        <label for="vacuum_floors" class="task-label">Vacuum and mop floors</label>
+        <div class="task-actions">
+          <input type="file" name="vacuum_floors_photo" accept="image/*">
+          <textarea name="vacuum_floors_comments" class="task-comments" placeholder="Comments (optional)"></textarea>
+        </div>
+      </div>
+
+      <!-- Task 2 -->
+      <div class="task-item">
+        <input type="checkbox" id="dust_surfaces" name="dust_surfaces">
+        <label for="dust_surfaces" class="task-label">Dust and wipe down surfaces (desks, tables)</label>
+        <div class="task-actions">
+          <input type="file" name="dust_surfaces_photo" accept="image/*">
+          <textarea name="dust_surfaces_comments" class="task-comments" placeholder="Comments (optional)"></textarea>
+        </div>
+      </div>
+
+      <!-- Task 3 -->
+      <div class="task-item">
+        <input type="checkbox" id="sanitize_touchpoints" name="sanitize_touchpoints">
+        <label for="sanitize_touchpoints" class="task-label">Sanitize high-touch points (door handles, switches)</label>
+        <div class="task-actions">
+          <input type="file" name="sanitize_touchpoints_photo" accept="image/*">
+          <textarea name="sanitize_touchpoints_comments" class="task-comments" placeholder="Comments (optional)"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2) Meeting Rooms Section -->
+    <div class="section">
+      <h3>Meeting Rooms</h3>
+
+      <!-- Task 4 -->
+      <div class="task-item">
+        <input type="checkbox" id="wipe_tables" name="wipe_tables">
+        <label for="wipe_tables" class="task-label">Wipe tables and chairs</label>
+        <div class="task-actions">
+          <input type="file" name="wipe_tables_photo" accept="image/*">
+          <textarea name="wipe_tables_comments" class="task-comments" placeholder="Comments (optional)"></textarea>
+        </div>
+      </div>
+      <!-- Task 5 -->
+      <div class="task-item">
+        <input type="checkbox" id="clean_electronics" name="clean_electronics">
+        <label for="clean_electronics" class="task-label">Clean shared electronics (screens, remotes, etc.)</label>
+        <div class="task-actions">
+          <input type="file" name="clean_electronics_photo" accept="image/*">
+          <textarea name="clean_electronics_comments" class="task-comments" placeholder="Comments (optional)"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3) Kitchens Section -->
+    <div class="section">
+      <h3>Kitchens</h3>
+
+      <!-- Task 6 -->
+      <div class="task-item">
+        <input type="checkbox" id="clean_appliances" name="clean_appliances">
+        <label for="clean_appliances" class="task-label">Clean appliances (microwaves, fridges, kettles)</label>
+        <div class="task-actions">
+          <input type="file" name="clean_appliances_photo" accept="image/*">
+          <textarea name="clean_appliances_comments" class="task-comments" placeholder="Comments (optional)"></textarea>
+        </div>
+      </div>
+      <!-- Task 7 -->
+      <div class="task-item">
+        <input type="checkbox" id="wipe_counters" name="wipe_counters">
+        <label for="wipe_counters" class="task-label">Wipe counters and tables</label>
+        <div class="task-actions">
+          <input type="file" name="wipe_counters_photo" accept="image/*">
+          <textarea name="wipe_counters_comments" class="task-comments" placeholder="Comments (optional)"></textarea>
+        </div>
+      </div>
+      <!-- Task 8 -->
+      <div class="task-item">
+        <input type="checkbox" id="empty_bins" name="empty_bins">
+        <label for="empty_bins" class="task-label">Empty rubbish bins and replace liners</label>
+        <div class="task-actions">
+          <input type="file" name="empty_bins_photo" accept="image/*">
+          <textarea name="empty_bins_comments" class="task-comments" placeholder="Comments (optional)"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4) Bathrooms Section -->
+    <div class="section">
+      <h3>Bathrooms</h3>
+
+      <!-- Task 9 -->
+      <div class="task-item">
+        <input type="checkbox" id="clean_toilets" name="clean_toilets">
+        <label for="clean_toilets" class="task-label">Clean and disinfect toilets</label>
+        <div class="task-actions">
+          <input type="file" name="clean_toilets_photo" accept="image/*">
+          <textarea name="clean_toilets_comments" class="task-comments" placeholder="Comments (optional)"></textarea>
+        </div>
+      </div>
+      <!-- Task 10 -->
+      <div class="task-item">
+        <input type="checkbox" id="restock_supplies" name="restock_supplies">
+        <label for="restock_supplies" class="task-label">Restock toilet paper, soap, paper towels</label>
+        <div class="task-actions">
+          <input type="file" name="restock_supplies_photo" accept="image/*">
+          <textarea name="restock_supplies_comments" class="task-comments" placeholder="Comments (optional)"></textarea>
+        </div>
+      </div>
+      <!-- Task 11 -->
+      <div class="task-item">
+        <input type="checkbox" id="clean_mirrors_sinks" name="clean_mirrors_sinks">
+        <label for="clean_mirrors_sinks" class="task-label">Clean mirrors, sinks, and faucets</label>
+        <div class="task-actions">
+          <input type="file" name="clean_mirrors_sinks_photo" accept="image/*">
+          <textarea name="clean_mirrors_sinks_comments" class="task-comments" placeholder="Comments (optional)"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5) Additional Tasks Section -->
+    <div class="section">
+      <h3>Extra Tasks / Final Checks</h3>
+      <!-- Task 12 -->
+      <div class="task-item">
+        <input type="checkbox" id="wipe_windows" name="wipe_windows">
+        <label for="wipe_windows" class="task-label">Wipe windows (removing smudges)</label>
+        <div class="task-actions">
+          <input type="file" name="wipe_windows_photo" accept="image/*">
+          <textarea name="wipe_windows_comments" class="task-comments" placeholder="Comments (optional)"></textarea>
+        </div>
+      </div>
+      <!-- Task 13 -->
+      <div class="task-item">
+        <input type="checkbox" id="sanitize_bins" name="sanitize_bins">
+        <label for="sanitize_bins" class="task-label">Sanitize bins (if needed)</label>
+        <div class="task-actions">
+          <input type="file" name="sanitize_bins_photo" accept="image/*">
+          <textarea name="sanitize_bins_comments" class="task-comments" placeholder="Comments (optional)"></textarea>
+        </div>
+      </div>
+      <!-- Task 14 -->
+      <div class="task-item">
+        <input type="checkbox" id="check_lights" name="check_lights">
+        <label for="check_lights" class="task-label">Check lights/fans are off and space is tidy</label>
+        <div class="task-actions">
+          <input type="file" name="check_lights_photo" accept="image/*">
+          <textarea name="check_lights_comments" class="task-comments" placeholder="Comments (optional)"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- Submit Button (no Formspree action included here by default, but you can add if needed) -->
+    <button type="submit" class="submit-button">Submit Checklist</button>
+  </form>
+</div>
+
+<footer>
+  <p>© 2024 Workspace365 - Co-working Cleaning Checklist</p>
+</footer>
+
+</body>
+</html>
