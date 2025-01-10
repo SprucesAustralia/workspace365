@@ -2,30 +2,23 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Workspace365 - 72 York St, South Melbourne</title>
+  <title>Workspace365 - Detailed Weekly Cleaning Checklist</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
-    /* 
-      Colors derived from the screenshot:
-      Dark header: #0f1f17 (approx)
-      Off-white background: #f5f2ed
-      Coral accent: #e4795b (or #f08360)
-      You can fine-tune these for an exact match
-    */
-
+    /* Color & Font Variables (Approx. to match screenshot) */
     :root {
-      --header-bg: #0f1f17;
-      --background: #f5f2ed;
-      --accent: #f08360; /* Main accent (coral/salmon) */
+      --header-bg: #0f1f17;       /* Dark greenish-black */
+      --background: #f5f2ed;      /* Off-white background */
+      --accent: #f08360;         /* Coral / Salmon accent */
       --text-color: #333333;
       --heading-font: Georgia, serif;
       --body-font: "Segoe UI", Tahoma, sans-serif;
     }
 
     * {
-      margin: 0; 
-      padding: 0; 
+      margin: 0;
+      padding: 0;
       box-sizing: border-box;
     }
 
@@ -42,14 +35,13 @@
       padding: 20px;
       text-align: center;
     }
-
     header h1 {
       font-family: var(--heading-font);
       font-size: 28px;
       margin-bottom: 5px;
     }
 
-    /* Hero Section for address or big text */
+    /* Hero Section */
     .hero {
       background-color: var(--background);
       text-align: center;
@@ -75,7 +67,6 @@
       max-width: 600px;
       margin: 0 auto 20px;
     }
-
     .hero .btn-tour {
       font-size: 16px;
       padding: 12px 24px;
@@ -91,8 +82,9 @@
       color: #ffffff;
     }
 
+    /* Container */
     .container {
-      max-width: 900px;
+      max-width: 1000px;
       margin: 30px auto;
       padding: 0 20px;
     }
@@ -100,91 +92,117 @@
     h2 {
       font-family: var(--heading-font);
       font-size: 24px;
-      margin-bottom: 15px;
+      margin-bottom: 20px;
       color: var(--accent);
+      text-align: center;
     }
 
-    /* Checklist styling */
-    .checklist-form .section {
-      margin-bottom: 30px;
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 20px;
-    }
-
-    .checklist-form .section:last-child {
-      border-bottom: none;
-    }
-
-    .section h3 {
-      font-size: 20px;
+    /* Section headings (for areas) */
+    .area-heading {
+      margin-top: 40px;
       margin-bottom: 10px;
       font-family: var(--heading-font);
       color: #444;
+      font-size: 20px;
     }
 
-    .task-item {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      margin-bottom: 10px;
+    /* Task Table */
+    .task-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 30px;
+      background-color: #fff;
     }
 
-    .task-item input[type="checkbox"] {
-      margin-right: 10px;
-      transform: scale(1.2);
-    }
-
-    .task-label {
-      flex: 1; 
-      margin-left: 5px;
+    .task-table thead th {
+      background-color: var(--accent);
+      color: #ffffff;
+      font-weight: normal;
+      font-family: var(--heading-font);
+      text-align: center;
+      padding: 10px;
       font-size: 16px;
     }
+    .task-table th.day-column {
+      width: 160px; /* Enough width for checkbox, file input, etc. */
+    }
+    .task-table tbody td {
+      border: 1px solid #ddd;
+      vertical-align: top;
+      padding: 10px;
+    }
 
-    .task-actions {
+    .task-desc {
+      width: 220px; /* Slightly narrower to leave space for day columns */
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    /* Within each cell for a day, we can keep form elements stacked */
+    .cell-content {
       display: flex;
       flex-direction: column;
-      margin-left: 25px;
-      margin-top: 5px;
+      gap: 6px;
     }
-
-    .task-actions input[type="file"] {
-      margin-bottom: 5px;
+    .cell-content label {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 14px;
+      cursor: pointer;
     }
-
-    .task-comments {
+    .cell-content input[type="checkbox"] {
+      transform: scale(1.2);
+    }
+    .cell-content input[type="file"] {
+      font-size: 12px;
+    }
+    .cell-content textarea {
       width: 100%;
-      max-width: 350px;
-      padding: 6px;
+      font-size: 12px;
+      min-height: 40px;
       border: 1px solid #ccc;
       border-radius: 3px;
-      margin-top: 5px;
-      font-size: 14px;
+      padding: 4px;
     }
 
-    .submit-button {
+    /* Submit button at bottom */
+    .submit-btn {
       display: block;
-      margin: 30px auto 0;
+      margin: 40px auto 0;
       background-color: var(--accent);
       color: #fff;
       border: none;
-      padding: 12px 30px;
+      padding: 14px 36px;
       border-radius: 4px;
       cursor: pointer;
       font-size: 16px;
       transition: background-color 0.3s;
     }
-
-    .submit-button:hover {
-      background-color: #e06e54; /* slightly darker accent */
+    .submit-btn:hover {
+      background-color: #e06e54; /* Slightly darker accent */
     }
 
     footer {
       text-align: center;
       padding: 20px;
       font-size: 14px;
-      color: #888888;
       background-color: var(--header-bg);
       color: #ffffff;
+    }
+
+    @media (max-width: 700px) {
+      /* Make table more scrollable if needed */
+      .task-table thead th,
+      .task-table tbody td {
+        font-size: 14px;
+      }
+      .task-desc {
+        width: 150px;
+      }
+      .task-table th.day-column {
+        width: 140px;
+      }
     }
   </style>
 </head>
@@ -202,170 +220,523 @@
 </section>
 
 <div class="container">
-  <h2>Co-working Space Cleaning Checklist</h2>
-  <form class="checklist-form" action="#" method="post" enctype="multipart/form-data">
-    <!-- Example grouping of tasks: Common Areas, Meeting Rooms, Kitchens, Bathrooms, etc. -->
+  <h2>Detailed Weekly Cleaning Checklist</h2>
+  <p style="text-align:center; max-width:600px; margin:0 auto 40px;">
+    Each day has its own cleaning focus:
+    <strong>Monday &amp; Wednesday (Normal)</strong>, 
+    <strong>Tuesday &amp; Thursday (Full)</strong>, 
+    <strong>Friday (Deep Clean)</strong>.
+  </p>
 
-    <!-- 1) Common Areas Section -->
-    <div class="section">
-      <h3>Common Areas</h3>
+  <!-- Common Areas -->
+  <h3 class="area-heading">Common Areas</h3>
+  <table class="task-table">
+    <thead>
+      <tr>
+        <th class="task-desc">Task</th>
+        <th class="day-column">Mon (Normal)</th>
+        <th class="day-column">Tue (Full)</th>
+        <th class="day-column">Wed (Normal)</th>
+        <th class="day-column">Thu (Full)</th>
+        <th class="day-column">Fri (Deep)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Example row -->
+      <tr>
+        <td>Vacuum & mop floors</td>
+        <!-- Monday -->
+        <td>
+          <div class="cell-content">
+            <label>
+              <input type="checkbox" name="common_vacuum_mon" />
+              Done
+            </label>
+            <input type="file" name="common_vacuum_mon_photo" accept="image/*" />
+            <textarea name="common_vacuum_mon_comments" placeholder="Comments"></textarea>
+          </div>
+        </td>
+        <!-- Tuesday -->
+        <td>
+          <div class="cell-content">
+            <label>
+              <input type="checkbox" name="common_vacuum_tue" />
+              Done
+            </label>
+            <input type="file" name="common_vacuum_tue_photo" accept="image/*" />
+            <textarea name="common_vacuum_tue_comments" placeholder="Comments"></textarea>
+          </div>
+        </td>
+        <!-- Wednesday -->
+        <td>
+          <div class="cell-content">
+            <label>
+              <input type="checkbox" name="common_vacuum_wed" />
+              Done
+            </label>
+            <input type="file" name="common_vacuum_wed_photo" accept="image/*" />
+            <textarea name="common_vacuum_wed_comments" placeholder="Comments"></textarea>
+          </div>
+        </td>
+        <!-- Thursday -->
+        <td>
+          <div class="cell-content">
+            <label>
+              <input type="checkbox" name="common_vacuum_thu" />
+              Done
+            </label>
+            <input type="file" name="common_vacuum_thu_photo" accept="image/*" />
+            <textarea name="common_vacuum_thu_comments" placeholder="Comments"></textarea>
+          </div>
+        </td>
+        <!-- Friday -->
+        <td>
+          <div class="cell-content">
+            <label>
+              <input type="checkbox" name="common_vacuum_fri" />
+              Done
+            </label>
+            <input type="file" name="common_vacuum_fri_photo" accept="image/*" />
+            <textarea name="common_vacuum_fri_comments" placeholder="Comments"></textarea>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>Dust & wipe surfaces (tables, seats)</td>
+        <td>
+          <div class="cell-content">
+            <label><input type="checkbox" name="common_dust_mon" /> Done</label>
+            <input type="file" name="common_dust_mon_photo" accept="image/*" />
+            <textarea name="common_dust_mon_comments" placeholder="Comments"></textarea>
+          </div>
+        </td>
+        <td>
+          <div class="cell-content">
+            <label><input type="checkbox" name="common_dust_tue" /> Done</label>
+            <input type="file" name="common_dust_tue_photo" accept="image/*" />
+            <textarea name="common_dust_tue_comments" placeholder="Comments"></textarea>
+          </div>
+        </td>
+        <td>
+          <div class="cell-content">
+            <label><input type="checkbox" name="common_dust_wed" /> Done</label>
+            <input type="file" name="common_dust_wed_photo" accept="image/*" />
+            <textarea name="common_dust_wed_comments" placeholder="Comments"></textarea>
+          </div>
+        </td>
+        <td>
+          <div class="cell-content">
+            <label><input type="checkbox" name="common_dust_thu" /> Done</label>
+            <input type="file" name="common_dust_thu_photo" accept="image/*" />
+            <textarea name="common_dust_thu_comments" placeholder="Comments"></textarea>
+          </div>
+        </td>
+        <td>
+          <div class="cell-content">
+            <label><input type="checkbox" name="common_dust_fri" /> Done</label>
+            <input type="file" name="common_dust_fri_photo" accept="image/*" />
+            <textarea name="common_dust_fri_comments" placeholder="Comments"></textarea>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>Sanitize high-touch points (door handles, switches)</td>
+        <td>
+          <div class="cell-content">
+            <label><input type="checkbox" name="common_sanitize_mon" /> Done</label>
+            <input type="file" name="common_sanitize_mon_photo" accept="image/*" />
+            <textarea name="common_sanitize_mon_comments" placeholder="Comments"></textarea>
+          </div>
+        </td>
+        <td>
+          <div class="cell-content">
+            <label><input type="checkbox" name="common_sanitize_tue" /> Done</label>
+            <input type="file" name="common_sanitize_tue_photo" accept="image/*" />
+            <textarea name="common_sanitize_tue_comments" placeholder="Comments"></textarea>
+          </div>
+        </td>
+        <td>
+          <div class="cell-content">
+            <label><input type="checkbox" name="common_sanitize_wed" /> Done</label>
+            <input type="file" name="common_sanitize_wed_photo" accept="image/*" />
+            <textarea name="common_sanitize_wed_comments" placeholder="Comments"></textarea>
+          </div>
+        </td>
+        <td>
+          <div class="cell-content">
+            <label><input type="checkbox" name="common_sanitize_thu" /> Done</label>
+            <input type="file" name="common_sanitize_thu_photo" accept="image/*" />
+            <textarea name="common_sanitize_thu_comments" placeholder="Comments"></textarea>
+          </div>
+        </td>
+        <td>
+          <div class="cell-content">
+            <label><input type="checkbox" name="common_sanitize_fri" /> Done</label>
+            <input type="file" name="common_sanitize_fri_photo" accept="image/*" />
+            <textarea name="common_sanitize_fri_comments" placeholder="Comments"></textarea>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 
-      <!-- Task 1 -->
-      <div class="task-item">
-        <input type="checkbox" id="vacuum_floors" name="vacuum_floors">
-        <label for="vacuum_floors" class="task-label">Vacuum and mop floors</label>
-        <div class="task-actions">
-          <input type="file" name="vacuum_floors_photo" accept="image/*">
-          <textarea name="vacuum_floors_comments" class="task-comments" placeholder="Comments (optional)"></textarea>
-        </div>
-      </div>
+  <!-- Meeting Rooms -->
+  <h3 class="area-heading">Meeting Rooms</h3>
+  <table class="task-table">
+    <thead>
+      <tr>
+        <th class="task-desc">Task</th>
+        <th class="day-column">Mon (Normal)</th>
+        <th class="day-column">Tue (Full)</th>
+        <th class="day-column">Wed (Normal)</th>
+        <th class="day-column">Thu (Full)</th>
+        <th class="day-column">Fri (Deep)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Wipe tables & chairs</td>
+        <td>
+          <div class="cell-content">
+            <label><input type="checkbox" name="mtg_wipe_mon" /> Done</label>
+            <input type="file" name="mtg_wipe_mon_photo" accept="image/*" />
+            <textarea name="mtg_wipe_mon_comment" placeholder="Comments"></textarea>
+          </div>
+        </td>
+        <td>
+          <div class="cell-content">
+            <label><input type="checkbox" name="mtg_wipe_tue" /> Done</label>
+            <input type="file" name="mtg_wipe_tue_photo" accept="image/*" />
+            <textarea name="mtg_wipe_tue_comment" placeholder="Comments"></textarea>
+          </div>
+        </td>
+        <td>
+          <div class="cell-content">
+            <label><input type="checkbox" name="mtg_wipe_wed" /> Done</label>
+            <input type="file" name="mtg_wipe_wed_photo" accept="image/*" />
+            <textarea name="mtg_wipe_wed_comment" placeholder="Comments"></textarea>
+          </div>
+        </td>
+        <td>
+          <div class="cell-content">
+            <label><input type="checkbox" name="mtg_wipe_thu" /> Done</label>
+            <input type="file" name="mtg_wipe_thu_photo" accept="image/*" />
+            <textarea name="mtg_wipe_thu_comment" placeholder="Comments"></textarea>
+          </div>
+        </td>
+        <td>
+          <div class="cell-content">
+            <label><input type="checkbox" name="mtg_wipe_fri" /> Done</label>
+            <input type="file" name="mtg_wipe_fri_photo" accept="image/*" />
+            <textarea name="mtg_wipe_fri_comment" placeholder="Comments"></textarea>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>Clean screens & shared electronics</td>
+        <td>
+          <div class="cell-content">
+            <label><input type="checkbox" name="mtg_elec_mon" /> Done</label>
+            <input type="file" name="mtg_elec_mon_photo" accept="image/*" />
+            <textarea name="mtg_elec_mon_comment" placeholder="Comments"></textarea>
+          </div>
+        </td>
+        <td>
+          <div class="cell-content">
+            <label><input type="checkbox" name="mtg_elec_tue" /> Done</label>
+            <input type="file" name="mtg_elec_tue_photo" accept="image/*" />
+            <textarea name="mtg_elec_tue_comment" placeholder="Comments"></textarea>
+          </div>
+        </td>
+        <td>
+          <div class="cell-content">
+            <label><input type="checkbox" name="mtg_elec_wed" /> Done</label>
+            <input type="file" name="mtg_elec_wed_photo" accept="image/*" />
+            <textarea name="mtg_elec_wed_comment" placeholder="Comments"></textarea>
+          </div>
+        </td>
+        <td>
+          <div class="cell-content">
+            <label><input type="checkbox" name="mtg_elec_thu" /> Done</label>
+            <input type="file" name="mtg_elec_thu_photo" accept="image/*" />
+            <textarea name="mtg_elec_thu_comment" placeholder="Comments"></textarea>
+          </div>
+        </td>
+        <td>
+          <div class="cell-content">
+            <label><input type="checkbox" name="mtg_elec_fri" /> Done</label>
+            <input type="file" name="mtg_elec_fri_photo" accept="image/*" />
+            <textarea name="mtg_elec_fri_comment" placeholder="Comments"></textarea>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 
-      <!-- Task 2 -->
-      <div class="task-item">
-        <input type="checkbox" id="dust_surfaces" name="dust_surfaces">
-        <label for="dust_surfaces" class="task-label">Dust and wipe down surfaces (desks, tables)</label>
-        <div class="task-actions">
-          <input type="file" name="dust_surfaces_photo" accept="image/*">
-          <textarea name="dust_surfaces_comments" class="task-comments" placeholder="Comments (optional)"></textarea>
-        </div>
-      </div>
+  <!-- Kitchens -->
+  <h3 class="area-heading">Kitchens</h3>
+  <table class="task-table">
+    <thead>
+      <tr>
+        <th class="task-desc">Task</th>
+        <th class="day-column">Mon (Normal)</th>
+        <th class="day-column">Tue (Full)</th>
+        <th class="day-column">Wed (Normal)</th>
+        <th class="day-column">Thu (Full)</th>
+        <th class="day-column">Fri (Deep)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Clean appliances (microwave, fridge)</td>
+        <td>
+          <div class="cell-content">
+            <label><input type="checkbox" name="kit_appliances_mon" /> Done</label>
+            <input type="file" name="kit_appliances_mon_photo" accept="image/*" />
+            <textarea name="kit_appliances_mon_comment" placeholder="Comments"></textarea>
+          </div>
+        </td>
+        <td>
+          <div class="cell-content">
+            <label><input type="checkbox" name="kit_appliances_tue" /> Done</label>
+            <input type="file" name="kit_appliances_tue_photo" accept="image/*" />
+            <textarea name="kit_appliances_tue_comment" placeholder="Comments"></textarea>
+          </div>
+        </td>
+        <td>
+          <div class="cell-content">
+            <label><input type="checkbox" name="kit_appliances_wed" /> Done</label>
+            <input type="file" name="kit_appliances_wed_photo" accept="image/*" />
+            <textarea name="kit_appliances_wed_comment" placeholder="Comments"></textarea>
+          </div>
+        </td>
+        <td>
+          <div class="cell-content">
+            <label><input type="checkbox" name="kit_appliances_thu" /> Done</label>
+            <input type="file" name="kit_appliances_thu_photo" accept="image/*" />
+            <textarea name="kit_appliances_thu_comment" placeholder="Comments"></textarea>
+          </div>
+        </td>
+        <td>
+          <div class="cell-content">
+            <label><input type="checkbox" name="kit_appliances_fri" /> Done</label>
+            <input type="file" name="kit_appliances_fri_photo" accept="image/*" />
+            <textarea name="kit_appliances_fri_comment" placeholder="Comments"></textarea>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>Wipe counters, tables, chairs</td>
+        <td>
+          <div class="cell-content">
+            <label><input type="checkbox" name="kit_counters_mon" /> Done</label>
+            <input type="file" name="kit_counters_mon_photo" accept="image/*" />
+            <textarea name="kit_counters_mon_comment" placeholder="Comments"></textarea>
+          </div>
+        </td>
+        <td>
+          <div class="cell-content">
+            <label><input type="checkbox" name="kit_counters_tue" /> Done</label>
+            <input type="file" name="kit_counters_tue_photo" accept="image/*" />
+            <textarea name="kit_counters_tue_comment" placeholder="Comments"></textarea>
+          </div>
+        </td>
+        <td>
+          <div class="cell-content">
+            <label><input type="checkbox" name="kit_counters_wed" /> Done</label>
+            <input type="file" name="kit_counters_wed_photo" accept="image/*" />
+            <textarea name="kit_counters_wed_comment" placeholder="Comments"></textarea>
+          </div>
+        </td>
+        <td>
+          <div class="cell-content">
+            <label><input type="checkbox" name="kit_counters_thu" /> Done</label>
+            <input type="file" name="kit_counters_thu_photo" accept="image/*" />
+            <textarea name="kit_counters_thu_comment" placeholder="Comments"></textarea>
+          </div>
+        </td>
+        <td>
+          <div class="cell-content">
+            <label><input type="checkbox" name="kit_counters_fri" /> Done</label>
+            <input type="file" name="kit_counters_fri_photo" accept="image/*" />
+            <textarea name="kit_counters_fri_comment" placeholder="Comments"></textarea>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>Empty bins, replace liners</td>
+        <td>
+          <div class="cell-content">
+            <label><input type="checkbox" name="kit_bins_mon" /> Done</label>
+            <input type="file" name="kit_bins_mon_photo" accept="image/*" />
+            <textarea name="kit_bins_mon_comment" placeholder="Comments"></textarea>
+          </div>
+        </td>
+        <td>
+          <div class="cell-content">
+            <label><input type="checkbox" name="kit_bins_tue" /> Done</label>
+            <input type="file" name="kit_bins_tue_photo" accept="image/*" />
+            <textarea name="kit_bins_tue_comment" placeholder="Comments"></textarea>
+          </div>
+        </td>
+        <td>
+          <div class="cell-content">
+            <label><input type="checkbox" name="kit_bins_wed" /> Done</label>
+            <input type="file" name="kit_bins_wed_photo" accept="image/*" />
+            <textarea name="kit_bins_wed_comment" placeholder="Comments"></textarea>
+          </div>
+        </td>
+        <td>
+          <div class="cell-content">
+            <label><input type="checkbox" name="kit_bins_thu" /> Done</label>
+            <input type="file" name="kit_bins_thu_photo" accept="image/*" />
+            <textarea name="kit_bins_thu_comment" placeholder="Comments"></textarea>
+          </div>
+        </td>
+        <td>
+          <div class="cell-content">
+            <label><input type="checkbox" name="kit_bins_fri" /> Done</label>
+            <input type="file" name="kit_bins_fri_photo" accept="image/*" />
+            <textarea name="kit_bins_fri_comment" placeholder="Comments"></textarea>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 
-      <!-- Task 3 -->
-      <div class="task-item">
-        <input type="checkbox" id="sanitize_touchpoints" name="sanitize_touchpoints">
-        <label for="sanitize_touchpoints" class="task-label">Sanitize high-touch points (door handles, switches)</label>
-        <div class="task-actions">
-          <input type="file" name="sanitize_touchpoints_photo" accept="image/*">
-          <textarea name="sanitize_touchpoints_comments" class="task-comments" placeholder="Comments (optional)"></textarea>
-        </div>
-      </div>
-    </div>
+  <!-- Bathrooms -->
+  <h3 class="area-heading">Bathrooms</h3>
+  <table class="task-table">
+    <thead>
+      <tr>
+        <th class="task-desc">Task</th>
+        <th class="day-column">Mon (Normal)</th>
+        <th class="day-column">Tue (Full)</th>
+        <th class="day-column">Wed (Normal)</th>
+        <th class="day-column">Thu (Full)</th>
+        <th class="day-column">Fri (Deep)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Clean & disinfect toilets</td>
+        <td>
+          <div class="cell-content">
+            <label><input type="checkbox" name="bathroom_toilets_mon" /> Done</label>
+            <input type="file" name="bathroom_toilets_mon_photo" accept="image/*" />
+            <textarea name="bathroom_toilets_mon_comment" placeholder="Comments"></textarea>
+          </div>
+        </td>
+        <td>
+          <div class="cell-content">
+            <label><input type="checkbox" name="bathroom_toilets_tue" /> Done</label>
+            <input type="file" name="bathroom_toilets_tue_photo" accept="image/*" />
+            <textarea name="bathroom_toilets_tue_comment" placeholder="Comments"></textarea>
+          </div>
+        </td>
+        <td>
+          <div class="cell-content">
+            <label><input type="checkbox" name="bathroom_toilets_wed" /> Done</label>
+            <input type="file" name="bathroom_toilets_wed_photo" accept="image/*" />
+            <textarea name="bathroom_toilets_wed_comment" placeholder="Comments"></textarea>
+          </div>
+        </td>
+        <td>
+          <div class="cell-content">
+            <label><input type="checkbox" name="bathroom_toilets_thu" /> Done</label>
+            <input type="file" name="bathroom_toilets_thu_photo" accept="image/*" />
+            <textarea name="bathroom_toilets_thu_comment" placeholder="Comments"></textarea>
+          </div>
+        </td>
+        <td>
+          <div class="cell-content">
+            <label><input type="checkbox" name="bathroom_toilets_fri" /> Done</label>
+            <input type="file" name="bathroom_toilets_fri_photo" accept="image/*" />
+            <textarea name="bathroom_toilets_fri_comment" placeholder="Comments"></textarea>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>Restock supplies (toilet paper, soap)</td>
+        <td>
+          <div class="cell-content">
+            <label><input type="checkbox" name="bathroom_restock_mon" /> Done</label>
+            <input type="file" name="bathroom_restock_mon_photo" accept="image/*" />
+            <textarea name="bathroom_restock_mon_comment" placeholder="Comments"></textarea>
+          </div>
+        </td>
+        <td>
+          <div class="cell-content">
+            <label><input type="checkbox" name="bathroom_restock_tue" /> Done</label>
+            <input type="file" name="bathroom_restock_tue_photo" accept="image/*" />
+            <textarea name="bathroom_restock_tue_comment" placeholder="Comments"></textarea>
+          </div>
+        </td>
+        <td>
+          <div class="cell-content">
+            <label><input type="checkbox" name="bathroom_restock_wed" /> Done</label>
+            <input type="file" name="bathroom_restock_wed_photo" accept="image/*" />
+            <textarea name="bathroom_restock_wed_comment" placeholder="Comments"></textarea>
+          </div>
+        </td>
+        <td>
+          <div class="cell-content">
+            <label><input type="checkbox" name="bathroom_restock_thu" /> Done</label>
+            <input type="file" name="bathroom_restock_thu_photo" accept="image/*" />
+            <textarea name="bathroom_restock_thu_comment" placeholder="Comments"></textarea>
+          </div>
+        </td>
+        <td>
+          <div class="cell-content">
+            <label><input type="checkbox" name="bathroom_restock_fri" /> Done</label>
+            <input type="file" name="bathroom_restock_fri_photo" accept="image/*" />
+            <textarea name="bathroom_restock_fri_comment" placeholder="Comments"></textarea>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>Clean mirrors, sinks & faucets</td>
+        <td>
+          <div class="cell-content">
+            <label><input type="checkbox" name="bathroom_mirrors_mon" /> Done</label>
+            <input type="file" name="bathroom_mirrors_mon_photo" accept="image/*" />
+            <textarea name="bathroom_mirrors_mon_comment" placeholder="Comments"></textarea>
+          </div>
+        </td>
+        <td>
+          <div class="cell-content">
+            <label><input type="checkbox" name="bathroom_mirrors_tue" /> Done</label>
+            <input type="file" name="bathroom_mirrors_tue_photo" accept="image/*" />
+            <textarea name="bathroom_mirrors_tue_comment" placeholder="Comments"></textarea>
+          </div>
+        </td>
+        <td>
+          <div class="cell-content">
+            <label><input type="checkbox" name="bathroom_mirrors_wed" /> Done</label>
+            <input type="file" name="bathroom_mirrors_wed_photo" accept="image/*" />
+            <textarea name="bathroom_mirrors_wed_comment" placeholder="Comments"></textarea>
+          </div>
+        </td>
+        <td>
+          <div class="cell-content">
+            <label><input type="checkbox" name="bathroom_mirrors_thu" /> Done</label>
+            <input type="file" name="bathroom_mirrors_thu_photo" accept="image/*" />
+            <textarea name="bathroom_mirrors_thu_comment" placeholder="Comments"></textarea>
+          </div>
+        </td>
+        <td>
+          <div class="cell-content">
+            <label><input type="checkbox" name="bathroom_mirrors_fri" /> Done</label>
+            <input type="file" name="bathroom_mirrors_fri_photo" accept="image/*" />
+            <textarea name="bathroom_mirrors_fri_comment" placeholder="Comments"></textarea>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 
-    <!-- 2) Meeting Rooms Section -->
-    <div class="section">
-      <h3>Meeting Rooms</h3>
-
-      <!-- Task 4 -->
-      <div class="task-item">
-        <input type="checkbox" id="wipe_tables" name="wipe_tables">
-        <label for="wipe_tables" class="task-label">Wipe tables and chairs</label>
-        <div class="task-actions">
-          <input type="file" name="wipe_tables_photo" accept="image/*">
-          <textarea name="wipe_tables_comments" class="task-comments" placeholder="Comments (optional)"></textarea>
-        </div>
-      </div>
-      <!-- Task 5 -->
-      <div class="task-item">
-        <input type="checkbox" id="clean_electronics" name="clean_electronics">
-        <label for="clean_electronics" class="task-label">Clean shared electronics (screens, remotes, etc.)</label>
-        <div class="task-actions">
-          <input type="file" name="clean_electronics_photo" accept="image/*">
-          <textarea name="clean_electronics_comments" class="task-comments" placeholder="Comments (optional)"></textarea>
-        </div>
-      </div>
-    </div>
-
-    <!-- 3) Kitchens Section -->
-    <div class="section">
-      <h3>Kitchens</h3>
-
-      <!-- Task 6 -->
-      <div class="task-item">
-        <input type="checkbox" id="clean_appliances" name="clean_appliances">
-        <label for="clean_appliances" class="task-label">Clean appliances (microwaves, fridges, kettles)</label>
-        <div class="task-actions">
-          <input type="file" name="clean_appliances_photo" accept="image/*">
-          <textarea name="clean_appliances_comments" class="task-comments" placeholder="Comments (optional)"></textarea>
-        </div>
-      </div>
-      <!-- Task 7 -->
-      <div class="task-item">
-        <input type="checkbox" id="wipe_counters" name="wipe_counters">
-        <label for="wipe_counters" class="task-label">Wipe counters and tables</label>
-        <div class="task-actions">
-          <input type="file" name="wipe_counters_photo" accept="image/*">
-          <textarea name="wipe_counters_comments" class="task-comments" placeholder="Comments (optional)"></textarea>
-        </div>
-      </div>
-      <!-- Task 8 -->
-      <div class="task-item">
-        <input type="checkbox" id="empty_bins" name="empty_bins">
-        <label for="empty_bins" class="task-label">Empty rubbish bins and replace liners</label>
-        <div class="task-actions">
-          <input type="file" name="empty_bins_photo" accept="image/*">
-          <textarea name="empty_bins_comments" class="task-comments" placeholder="Comments (optional)"></textarea>
-        </div>
-      </div>
-    </div>
-
-    <!-- 4) Bathrooms Section -->
-    <div class="section">
-      <h3>Bathrooms</h3>
-
-      <!-- Task 9 -->
-      <div class="task-item">
-        <input type="checkbox" id="clean_toilets" name="clean_toilets">
-        <label for="clean_toilets" class="task-label">Clean and disinfect toilets</label>
-        <div class="task-actions">
-          <input type="file" name="clean_toilets_photo" accept="image/*">
-          <textarea name="clean_toilets_comments" class="task-comments" placeholder="Comments (optional)"></textarea>
-        </div>
-      </div>
-      <!-- Task 10 -->
-      <div class="task-item">
-        <input type="checkbox" id="restock_supplies" name="restock_supplies">
-        <label for="restock_supplies" class="task-label">Restock toilet paper, soap, paper towels</label>
-        <div class="task-actions">
-          <input type="file" name="restock_supplies_photo" accept="image/*">
-          <textarea name="restock_supplies_comments" class="task-comments" placeholder="Comments (optional)"></textarea>
-        </div>
-      </div>
-      <!-- Task 11 -->
-      <div class="task-item">
-        <input type="checkbox" id="clean_mirrors_sinks" name="clean_mirrors_sinks">
-        <label for="clean_mirrors_sinks" class="task-label">Clean mirrors, sinks, and faucets</label>
-        <div class="task-actions">
-          <input type="file" name="clean_mirrors_sinks_photo" accept="image/*">
-          <textarea name="clean_mirrors_sinks_comments" class="task-comments" placeholder="Comments (optional)"></textarea>
-        </div>
-      </div>
-    </div>
-
-    <!-- 5) Additional Tasks Section -->
-    <div class="section">
-      <h3>Extra Tasks / Final Checks</h3>
-      <!-- Task 12 -->
-      <div class="task-item">
-        <input type="checkbox" id="wipe_windows" name="wipe_windows">
-        <label for="wipe_windows" class="task-label">Wipe windows (removing smudges)</label>
-        <div class="task-actions">
-          <input type="file" name="wipe_windows_photo" accept="image/*">
-          <textarea name="wipe_windows_comments" class="task-comments" placeholder="Comments (optional)"></textarea>
-        </div>
-      </div>
-      <!-- Task 13 -->
-      <div class="task-item">
-        <input type="checkbox" id="sanitize_bins" name="sanitize_bins">
-        <label for="sanitize_bins" class="task-label">Sanitize bins (if needed)</label>
-        <div class="task-actions">
-          <input type="file" name="sanitize_bins_photo" accept="image/*">
-          <textarea name="sanitize_bins_comments" class="task-comments" placeholder="Comments (optional)"></textarea>
-        </div>
-      </div>
-      <!-- Task 14 -->
-      <div class="task-item">
-        <input type="checkbox" id="check_lights" name="check_lights">
-        <label for="check_lights" class="task-label">Check lights/fans are off and space is tidy</label>
-        <div class="task-actions">
-          <input type="file" name="check_lights_photo" accept="image/*">
-          <textarea name="check_lights_comments" class="task-comments" placeholder="Comments (optional)"></textarea>
-        </div>
-      </div>
-    </div>
-
-    <!-- Submit Button (no Formspree action included here by default, but you can add if needed) -->
-    <button type="submit" class="submit-button">Submit Checklist</button>
-  </form>
+  <!-- SUBMIT BUTTON -->
+  <button type="submit" class="submit-btn">Submit Weekly Checklist</button>
 </div>
 
 <footer>
